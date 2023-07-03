@@ -3,8 +3,13 @@ const PORT = process.env.PORT || 8080;
 const express = require ('express');
 const axios = require ('axios');
 const cheerio = require ('cheerio');
+const cors = require('cors');
 
 const app = express ();
+
+app.use(cors({
+  origin: 'http://127.0.0.1:5500',
+}));
 
 const newspapers = [
   {
@@ -93,6 +98,3 @@ app.get ('/news/:newspaperId', (req, res) => {
 });
 
 app.listen (PORT, () => console.log (`server running on port ${PORT}`));
-
-
-// left at 49 mins!
